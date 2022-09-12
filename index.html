@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Connecting with the icon -->
+        <link rel="icon" href="/color-guessing-game/png/colorWheel.png">
+        <!-- Connecting with the CSS -->
+        <link rel="stylesheet" href="/color-guessing-game/build.css">
+        <title>Color Guesser</title>
+        <!-- Connecting with the javascript -->
+        
+      <script type="module" crossorigin src="/color-guessing-game/assets/index.11168cc7.js"></script>
+    </head>
+    <body class="h-screen flex flex-col">
+        <!-- Help Button -->
+        <div id="helpBtn" class="fixed top-3 left-3 rounded-full text-2xl px-4 py-1 bg-white cursor-grab hover:shadow-2xl hover:shadow-black hover:border-2 hover:border-black">
+            ?
+        </div>
+
+        <!-- Help Overlay -->
+        <div id="overlay" style="display: flex" class="fixed top-0 left-0 bg-overlay w-full h-full z-[2] flex justify-center items-center">
+            <div class="w-3/5 h-4/5 rounded bg-white relative">
+                <svg id="exitBtn" class="absolute top-3 right-3 cursor-grab" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Top Half, here the player gets the value to guess -->
+        <div class="bg-top-color h-1/5 flex flex-col flex-wrap justify-start items-center">
+            <p class="text-4xl text-white my-5">Guess the color</p>
+            <p class="text-5xl text-white">
+                hsl(
+                    <span id="hue">100</span>, 
+                    <span id="saturation">100%</span>, 
+                    <span id="light">50%</span>
+                )
+            </p>
+        </div>
+
+        <!-- Bottom Half, here the player has a chance to guess what the color is -->
+        <div class="bg-stone-900 h-4/5"></div>
+    </body>
+</html>

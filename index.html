@@ -10,7 +10,7 @@
         <title>Color Guesser</title>
         <!-- Connecting with the javascript -->
         
-      <script type="module" crossorigin src="/color-guessing-game/assets/index.11168cc7.js"></script>
+      <script type="module" crossorigin src="/color-guessing-game/assets/index.cc65c0bf.js"></script>
     </head>
     <body class="h-screen flex flex-col">
         <!-- Help Button -->
@@ -19,7 +19,7 @@
         </div>
 
         <!-- Help Overlay -->
-        <div id="overlay" style="display: flex" class="fixed top-0 left-0 bg-overlay w-full h-full z-[2] flex justify-center items-center">
+        <div id="overlay" style="display: none" class="fixed top-0 left-0 bg-overlay w-full h-full z-[2] flex justify-center items-center">
             <div class="w-3/5 h-4/5 rounded bg-white relative">
                 <svg id="exitBtn" class="absolute top-3 right-3 cursor-grab" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
@@ -33,13 +33,31 @@
             <p class="text-5xl text-white">
                 hsl(
                     <span id="hue">100</span>, 
-                    <span id="saturation">100%</span>, 
-                    <span id="light">50%</span>
+                    <span id="saturation">100</span>%, 
+                    <span id="lightness">50</span>%
                 )
             </p>
         </div>
 
         <!-- Bottom Half, here the player has a chance to guess what the color is -->
-        <div class="bg-stone-900 h-4/5"></div>
+        <div class="bg-stone-900 h-4/5 flex flex-col">
+            <div class="h-1/5 flex justify-center items-center">
+                <p class="text-white text-3xl">Current winning streak: <span id="streak">0</span></p>
+            </div>
+            <div class="h-2/5 flex justify-center items-end">
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+            </div>
+            <div class="h-2/5 flex justify-center items-start">
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+
+                <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
+            </div>
+        </div>
     </body>
 </html>

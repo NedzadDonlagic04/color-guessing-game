@@ -13,7 +13,7 @@
     </head>
     <body class="h-screen flex flex-col">
         <!-- Help Button -->
-        <div id="helpBtn" class="fixed top-3 left-3 rounded-full text-2xl px-4 py-1 bg-white cursor-grab hover:shadow-2xl hover:shadow-black hover:border-2 hover:border-black">
+        <div id="helpBtn" class="fixed top-3 left-3 rounded-full text-2xl px-4 py-1 bg-white cursor-grab hover:shadow-2xl hover:shadow-black hover:border-2 hover:border-black select-none">
             ?
         </div>
 
@@ -28,8 +28,8 @@
 
         <!-- Top Half, here the player gets the value to guess -->
         <div class="bg-top-color h-1/5 flex flex-col flex-wrap justify-start items-center">
-            <p class="text-4xl text-white my-5">Guess the color</p>
-            <p class="text-5xl text-white">
+            <p class="text-4xl text-white my-5 hover:cursor-default select-none	">Guess the color</p>
+            <p class="text-5xl text-white hover:cursor-default select-none">
                 hsl(
                     <span id="hue">100</span>, 
                     <span id="saturation">100</span>%, 
@@ -41,7 +41,7 @@
         <!-- Bottom Half, here the player has a chance to guess what the color is -->
         <div class="bg-stone-900 h-4/5 flex flex-col">
             <div class="h-1/5 flex justify-center items-center">
-                <p class="text-white text-3xl">Current winning streak: <span id="streak">0</span></p>
+                <p class="text-white text-3xl hover:cursor-default select-none">Current winning streak: <span id="streak">0</span></p>
             </div>
             <div class="h-2/5 flex justify-center items-end">
                 <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>

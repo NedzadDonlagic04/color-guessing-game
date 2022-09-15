@@ -33,6 +33,18 @@ const hsl = {
     l: document.querySelector('#lightness')
 }
 
+// Used to keep track of the highest score the player has received
+const scoreSpan = document.querySelector('#highScore');
+
+const updateHighScore = (score, highScore) => {
+    if(score > highScore)
+    {
+        highScore = score;
+        scoreSpan.innerHTML = highScore;
+        sessionStorage.setItem('highScore', highScore);
+    }
+}
+
 // Used to update the board with the passed colors
 const updateBoard = ({ hue, saturation, lightness }) => {
     hsl.h.innerHTML = hue;
@@ -81,15 +93,18 @@ const setPointerEvent = (elements, type) => {
 colorBoxes.forEach( box => {
     box.addEventListener('click', event => {
         setPointerEvent(colorBoxes, 'none');
+        setPointerEvent([helpBtn], 'none');
 
         if( event.target === winningBox )
         {
             streakCount++;
+            updateHighScore(streakCount, scoreSpan.innerHTML);
             animateGood();
             animateWBox();
         }
         else
         {
+            updateHighScore(streakCount, scoreSpan.innerHTML);
             streakCount = 0;
             animateBad();
             animateLBox(box);
@@ -103,7 +118,7 @@ colorBoxes.forEach( box => {
 fillBoxes(6);
 
 // Element that represents the streak message
-const streakMsg = document.querySelector('body div div p');
+const streakMsg = document.querySelector('#streakMsg');
 
 // Used to make the streak message animate in a "congrats on your success" sort of way
 const animateGood = () => {
@@ -136,6 +151,8 @@ const animateWBox = () => {
             streakMsg.style.pointerEvents = 'auto';
 
             setPointerEvent(colorBoxes, 'auto');
+            setPointerEvent([helpBtn], 'auto');
+
             fillBoxes(6);
         },
         easing: 'easeInOutSine'
@@ -180,4 +197,26 @@ const animateBad = () => {
         ],
         easing: 'easeInOutSine'
     });
+}
+
+// Used to reset the hsl color once the tab is switched
+document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState !== 'visible')
+    {
+        fillBoxes(6);
+    }
+});
+
+// Session used to keep track of the help message being already displayed and high score
+if(sessionStorage.getItem('helpSeen') === null)
+{
+    sessionStorage.setItem('helpSeen', 'true');
+    sessionStorage.setItem('highScore', '0');
+    scoreSpan.innerHTML = 0;
+    overlay.style.display = 'flex';
+}
+else
+{
+    const sessionScore = sessionStorage.getItem('highScore');
+    scoreSpan.innerHTML = sessionScore;
 }

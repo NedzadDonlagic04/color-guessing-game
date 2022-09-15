@@ -10,7 +10,7 @@
         <title>Color Guesser</title>
         <!-- Connecting with the javascript -->
         
-      <script type="module" crossorigin src="/color-guessing-game/assets/index.435ad434.js"></script>
+      <script type="module" crossorigin src="/color-guessing-game/assets/index.2d4b118b.js"></script>
     </head>
     <body class="h-screen flex flex-col">
         <!-- Help Button -->
@@ -18,12 +18,32 @@
             ?
         </div>
 
+        <!-- High Score -->
+        <div class="fixed top-3 right-3 rounded-full text-2xl px-4 py-1 bg-white select-none">
+            <p>High Score: <span id="highScore"> </span></p>
+        </div>
+
         <!-- Help Overlay -->
         <div id="overlay" style="display: none" class="fixed top-0 left-0 bg-overlay w-full h-full z-[2] flex justify-center items-center">
-            <div class="w-3/5 h-4/5 rounded bg-white relative">
+            <div class="w-3/5 h-4/5 rounded bg-white relative overflow-y-auto">
+
+                <!-- X symbol svg -->
                 <svg id="exitBtn" class="absolute top-3 right-3 cursor-grab" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                 </svg>
+
+                <!-- Help text -->
+                <p class="text-4xl text-center mt-5">Welcome to the Color Guessing Game!</p>
+                <p class="text-xl m-5">The game is simple, you will receive a random hsl color and based on it you'll have to pick 1 out of 6 boxes, one of which holds the correct color while the others contain fakes put there to confuse you!</p>
+                <p class="text-xl m-5">hsl stands for hue saturation lightness, using these 3 parameters we can make any color out there show up on the screen, it is also my prefer method of creating colors when working!</p>
+                <p class="text-xl m-5">There also exists a streak counter which will keep track of how many consecutive colors you've gotten right and your high score will go in the top right!</p>
+                <p class="text-xl m-5">Also if you run into the hsl color and boxes changing when you switch tabs don't worry! That's intended so that it makes it harder for you to cheat! You still have other ways of doing so tho, but you would never do such a thing right? :P </p>
+                <p class="text-xl m-5">In case you don't know what hsl is don't worry I'll leave a few helpful free resources to get you started on your learning, good luck and have fun!</p>
+
+                <!-- Helpful links -->
+                <p class="text-xl m-5 hover:text-blue-500"><a href="https://www.khanacademy.org/computing/pixar/color/color-101/v/color-3" target="_blank"> - Khan Academy</a></p>
+                <p class="text-xl m-5 hover:text-blue-500"><a href="https://www.youtube.com/watch?v=EJtmfkKulNA" target="_blank"> - Web Dev Simplified</a></p>
+                <p class="text-xl m-5 hover:text-blue-500"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl" target="_blank"> - mdn web docs</a></p>
             </div>
         </div>
 
@@ -42,7 +62,7 @@
         <!-- Bottom Half, here the player has a chance to guess what the color is -->
         <div class="bg-stone-900 h-4/5 flex flex-col">
             <div class="h-1/5 flex justify-center items-center">
-                <p class="text-white text-3xl hover:cursor-default select-none">Current winning streak: <span id="streak">0</span></p>
+                <p class="text-white text-3xl hover:cursor-default select-none" id="streakMsg">Current winning streak: <span id="streak">0</span></p>
             </div>
             <div class="h-2/5 flex justify-center items-end">
                 <div class="w-44 h-44 rounded m-5 border-white border-4 hover:scale-110 cursor-grab"></div>
